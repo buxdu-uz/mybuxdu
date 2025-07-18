@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Domain\Users\Resources\UserLoginResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,13 +17,9 @@ class AuthController extends Controller
             $user = Auth::user();
             $token = $user->createToken('auth_token')->plainTextToken;
 
-            return response()->json([
-                'message' => 'Login successful',
-                'token' => $token,
-                'user' => $user
-            ]);
+            return $this->successResponse($token, new UserLoginResource($user));
         }
 
-        return response()->json(['message' => 'Unauthorized'], 401);
+        return $this->errorResponse('Login yoki parol xato!');
     }
 }
