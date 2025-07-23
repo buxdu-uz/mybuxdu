@@ -22,4 +22,17 @@ class AuthController extends Controller
 
         return $this->errorResponse('Login yoki parol xato!');
     }
+
+    public function logout()
+    {
+        $user = Auth::user();
+        $user->tokens()->delete();
+
+        return $this->successResponse('Siz muvaffaqiyatli tizimdan chiqdingiz!', '');
+    }
+
+    public function me()
+    {
+        return $this->successResponse('',new UserLoginResource(Auth::user()));
+    }
 }
