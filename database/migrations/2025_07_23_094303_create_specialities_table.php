@@ -15,17 +15,17 @@ return new class extends Migration
     {
         Schema::create('specialities', function (Blueprint $table) {
             $table->id();
-            $table->string('code',30);
-            $table->string('name');
             $table->foreignIdFor(Department::class)
                 ->nullable()
                 ->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignIdFor(ClassifierOption::class,'h_locality_type')->nullable();
-            $table->foreignIdFor(ClassifierOption::class,'h_education_type')->nullable();
-            $table->foreignIdFor(ClassifierOption::class,'h_bachelor_speciality')->nullable();
-            $table->foreignIdFor(ClassifierOption::class,'h_master_speciality')->nullable();
+            $table->string('code',30);
+            $table->string('name');
+            $table->string('h_locality_type')->nullable();
+            $table->string('h_education_type')->nullable();
+            $table->string('h_bachelor_speciality')->nullable();
+            $table->string('h_master_speciality')->nullable();
             $table->string('doctorate_speciality')->nullable();
-            $table->foreignIdFor(ClassifierOption::class,'h_speciality_ordinatura')->nullable();
+            $table->string('h_speciality_ordinatura')->nullable();
             $table->timestamps();
         });
     }

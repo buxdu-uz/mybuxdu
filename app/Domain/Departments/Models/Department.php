@@ -17,12 +17,12 @@ class Department extends Model
         'h_locality_type',
     ];
 
-    public function structureType(Model $model): HasOne
+    public function structureType(): HasOne
     {
         return $this->HasOne(ClassifierOption::class, 'id', 'h_structure_type');
     }
 
-    public function localityType(Model $model): HasOne
+    public function localityType(): HasOne
     {
         return $this->HasOne(ClassifierOption::class, 'id', 'h_locality_type');
     }

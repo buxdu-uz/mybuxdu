@@ -44,17 +44,13 @@ class ClassifierOption extends Model
 
     /**
      * @param string $key
-     * @param string|null $code
+     * @param string $code
      * @return int|null
      */
-    public static function getId(string $key, ?string $code): int|null
+    public static function getId(string $key, string $code): int|null
     {
-//        $key = strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $key));
-//        $key = 'h_' . $key;
-        if (is_null($code)) {
-            return null;
-        }
-
+        $key=strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $key));
+        $key='h_'.$key;
         try {
             return ClassifierOption::whereHas('classifier', function ($query) use ($key) {
                 $query->where('classifier', $key);

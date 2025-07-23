@@ -14,19 +14,21 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $roles = ['admin', 'user', 'citizen'];
+        $roles = ['admin', 'guest', 'citizen','teacher','finance'];
 
         foreach ($roles as $role) {
             Role::updateOrCreate(['name' => $role]);
         }
 
         $user = User::updateOrCreate([
-            'login' => 'admin'
+            'login' => 'admin',
+            'employee_id_number' => '1',
         ],[
-            'name' => 'Admin',
+            'email' => 'admin@buxdu.uz',
+            'full_name' => 'Admin Admin Admin',
             'password' => 'admin'
         ]);
 
-        $user->assignRole(['admin','user', 'citizen']);
+        $user->assignRole(['admin', 'guest', 'citizen','teacher','finance']);
     }
 }
