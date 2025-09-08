@@ -20,6 +20,13 @@ class JwtMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $token = $request->bearerToken();
+        if (!$token){
+            return response()
+                ->json([
+                    'status' => false,
+                    'message' => 'Token not provided'
+                ]);
+        }
 
         try {
             // Django SIMPLE_JWT_SECRET_KEY ni ishlatish kerak
