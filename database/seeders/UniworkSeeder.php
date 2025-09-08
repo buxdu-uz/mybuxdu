@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\LibResource;
 use DateTime;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,9 +16,9 @@ class UniworkSeeder extends Seeder
     public function run(): void
     {
         $this->bbks();
-//        $this->resources();
-//        $this->publishings();
-//        $this->books();
+        $this->resources();
+        $this->publishings();
+        $this->books();
     }
 
     public function bbks()

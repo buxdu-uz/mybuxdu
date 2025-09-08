@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('image')->nullable()->comment('rasmi');
             $table->double('price')->default(0)->comment('narxi');
             $table->date('release_date')->nullable()->comment('chiqqan yili');
-            $table->dateTime('add_date')->nullable()->comment('qoshilgan vaqti');
+            $table->string('add_date')->nullable()->comment('qoshilgan vaqti');
             $table->timestamps();
         });
     }
