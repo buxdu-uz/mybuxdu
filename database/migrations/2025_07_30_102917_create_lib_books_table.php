@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('lib_books', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('humen_id')->nullable();
-            $table->foreignIdFor(\App\Models\LibResource::class)
+            $table->foreignIdFor(\App\Domain\Libraries\Resources\Models\LibResource::class)
                 ->nullable()
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->foreignIdFor(\App\Models\LibPublishing::class)
+            $table->foreignIdFor(\App\Domain\Libraries\Publishings\Models\LibPublishing::class)
                 ->nullable()
                 ->constrained()
                 ->cascadeOnUpdate()

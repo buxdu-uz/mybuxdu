@@ -13,14 +13,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id_number')->unique();
-            $table->string('login')->unique();
-            $table->string('email')->unique()->nullable();
-            $table->string('full_name');
-            $table->string('avatar')->nullable();
-            $table->string('password');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('hemis_id');
+            $table->enum('user_type',['employee','student']);
+            $table->unsignedBigInteger('hemis_id_number')->unique()->comment('xodimni ham studentni ham hemis id si');
             $table->timestamps();
         });
 
@@ -40,7 +36,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
 };
