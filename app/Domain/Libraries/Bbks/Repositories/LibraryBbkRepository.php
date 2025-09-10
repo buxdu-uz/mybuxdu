@@ -6,11 +6,11 @@ use App\Domain\Libraries\Bbks\Models\LibBbk;
 
 class LibraryBbkRepository
 {
-    public function paginate($pagination)
+    public function paginate($pagination,$filter)
     {
         return LibBbk::query()
-            ->whereNull('sub_id')
-            ->orderBy('name')
+            ->Filter($filter)
+//            ->orderBy('name')
             ->paginate($pagination);
     }
 }
