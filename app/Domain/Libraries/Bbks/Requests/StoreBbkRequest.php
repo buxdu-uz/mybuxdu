@@ -22,7 +22,7 @@ class StoreBbkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sub_id' => 'nullable|exists:library_bbks,id',
+            'sub_id' => 'nullable|exists:lib_bbks,id',
             'code' => 'required|integer',
             'name' => 'required|string',
             'info' => 'required|string',

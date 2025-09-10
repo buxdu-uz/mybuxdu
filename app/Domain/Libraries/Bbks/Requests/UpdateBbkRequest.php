@@ -22,7 +22,7 @@ class UpdateBbkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sub_id' => 'sometimes|exists:library_bbks,id',
+            'sub_id' => 'sometimes|exists:lib_bbks,id',
             'code' => 'required|integer',
             'name' => 'required|string',
             'info' => 'required|string',
