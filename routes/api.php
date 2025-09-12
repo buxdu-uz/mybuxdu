@@ -3,7 +3,7 @@
 use App\Http\Controllers\Libraries\Bbks\BbkController;
 use App\Http\Controllers\Libraries\Books\BookController;
 use App\Http\Controllers\Libraries\Publishings\PublishingController;
-use App\Http\Controllers\Libraries\Resources\ResourceController;
+use App\Http\Controllers\Libraries\Resources\ResourceTypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +19,9 @@ Route::group(['prefix' => 'main', 'middleware' => 'jwt'], function (){
         Route::put('bbks/{lib_bbk}/update',[BbkController::class,'update']);
         Route::delete('bbks/{lib_bbk}/delete',[BbkController::class,'delete']);
         Route::get('publishings',[PublishingController::class,'paginate']);
-        Route::get('resources',[ResourceController::class,'paginate']);
+        Route::get('resource_types',[ResourceTypeController::class,'paginate']);
         Route::get('books',[BookController::class,'paginate']);
+        Route::post('books',[BookController::class,'store']);
     });
 //    LIBRARIES ROUTES END
 

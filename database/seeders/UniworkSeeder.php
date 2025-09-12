@@ -16,7 +16,7 @@ class UniworkSeeder extends Seeder
     public function run(): void
     {
         $this->bbks();
-        $this->resources();
+        $this->resource_types();
         $this->publishings();
         $this->books();
     }
@@ -61,9 +61,9 @@ class UniworkSeeder extends Seeder
         return response()->json(['success' => 'BBKs imported successfully']);
     }
 
-    public function resources()
+    public function resource_types()
     {
-        $sqlPath = public_path('uniworks/libraries/resource.sql');
+        $sqlPath = public_path('uniworks/libraries/resource_type.sql');
         $sql = File::get($sqlPath);
 
         DB::unprepared($sql);

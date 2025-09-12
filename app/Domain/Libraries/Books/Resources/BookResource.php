@@ -2,8 +2,9 @@
 
 namespace App\Domain\Libraries\Books\Resources;
 
+use App\Domain\Libraries\Bbks\Resources\BbkResource;
 use App\Domain\Libraries\Publishings\Resources\PublishingResource;
-use App\Domain\Libraries\Resources\Resources\ResourceResource;
+use App\Domain\Libraries\Resources\Resources\ResourceTypeResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,7 +20,6 @@ class BookResource extends JsonResource
         return [
             'id' => $this->id,
             'humen_id' => $this->humen_id,
-            'classifier' => $this->classifier,
             'name' => $this->name,
             'author' => $this->author,
             'annotation' => $this->annotation,
@@ -29,7 +29,8 @@ class BookResource extends JsonResource
             'release_date' => $this->release_date,
             'is_active' => $this->is_active,
             'created_at' => $this->created_at,
-            'resource' => new ResourceResource($this->resource),
+            'bbk' => new BbkResource($this->bbk),
+            'resource' => new ResourceTypeResource($this->resourceType),
             'publishing' => new PublishingResource($this->publishing),
         ];
     }
