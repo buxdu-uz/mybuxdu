@@ -31,7 +31,9 @@ class BookResource extends JsonResource
             'created_at' => $this->created_at,
             'qrs' => $request->query('pagination')
                 ? null
-                : BookQrResource::collection($this->qrs),
+                : BookQrResource::collection(
+                    $this->qrs()->paginate($request->query('pagination', 30))
+                )->response()->getData(true),
             'bbk' => new BbkResource($this->bbk),
             'resource' => new ResourceTypeResource($this->resourceType),
             'publishing' => new PublishingResource($this->publishing),
