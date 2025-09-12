@@ -21,7 +21,7 @@ class BookQrResource extends JsonResource
             'id' => $this->id,
             'qr_path' => $this->qr_path,
             'qr_url' => $this->qr_path
-                ? asset('storage/public/' . $this->qr_path)
+                ? asset('storage/' . $this->qr_path)
                 : null,
         ];
     }
