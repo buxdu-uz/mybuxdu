@@ -16,7 +16,7 @@ class StoreLibBookAction
             $lib_book = LibBook::create([
                 'lib_resource_type_id' => $dto->getLibResourceTypeId(),
                 'lib_publishing_id' => $dto->getLibPublishingId(),
-                'lib_bbk_id' => $dto->getBbkId(),
+                'lib_bbk_id' => $dto->getLibBbkId(),
                 'name' => $dto->getName(),
                 'author' => $dto->getAuthor(),
                 'annotation' => $dto->getAnnotation(),
@@ -25,15 +25,14 @@ class StoreLibBookAction
                 'page' => $dto->getPage(),
                 'image' => $dto->getImage(),
                 'price' => $dto->getPrice(),
-                'release_date' => $dto->getReleaseDate()
+                'release_date' => $dto->getReleaseDate(),
+                'added_date' => now()
             ]);
         }catch (Exception $exception){
-
             DB::rollBack();
             throw $exception;
         }
         DB::commit();
-
         return $lib_book;
     }
 }

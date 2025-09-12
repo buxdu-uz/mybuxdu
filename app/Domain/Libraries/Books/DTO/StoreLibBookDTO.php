@@ -7,8 +7,8 @@ class StoreLibBookDTO
     private ?int $humen_id = null;
     private string $name;
     private string $author;
-    private int $lib_resource_type_id = null;
-    private int $lib_publishing_id = null;
+    private int $lib_resource_type_id;
+    private int $lib_publishing_id;
     private ?string $release_date = null;
     private int $page;
     private ?float $price = null;
@@ -16,7 +16,7 @@ class StoreLibBookDTO
     private string $annotation;
     private bool $is_active;
     private ?string $image = null;
-    private int $bbk_id;
+    private int $lib_bbk_id;
 
     public static function fromArray(array $data)
     {
@@ -32,7 +32,7 @@ class StoreLibBookDTO
         $dto->setAnnotation($data['annotation']);
         $dto->setIsActive($data['is_active']);
         $dto->setImage($data['image'] ?? null);
-        $dto->setBbkId($data['bbk_id']);
+        $dto->setLibBbkId($data['lib_bbk_id']);
 
         return $dto;
     }
@@ -40,7 +40,7 @@ class StoreLibBookDTO
     /**
      * @return int|null
      */
-    public function getHumenId()
+    public function getHumenId(): ?int
     {
         return $this->humen_id;
     }
@@ -48,7 +48,7 @@ class StoreLibBookDTO
     /**
      * @param int|null $humen_id
      */
-    public function setHumenId($humen_id)
+    public function setHumenId(?int $humen_id): void
     {
         $this->humen_id = $humen_id;
     }
@@ -56,7 +56,7 @@ class StoreLibBookDTO
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -64,7 +64,7 @@ class StoreLibBookDTO
     /**
      * @param string $name
      */
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -72,7 +72,7 @@ class StoreLibBookDTO
     /**
      * @return string
      */
-    public function getAuthor()
+    public function getAuthor(): string
     {
         return $this->author;
     }
@@ -80,39 +80,39 @@ class StoreLibBookDTO
     /**
      * @param string $author
      */
-    public function setAuthor($author)
+    public function setAuthor(string $author): void
     {
         $this->author = $author;
     }
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getLibResourceTypeId()
+    public function getLibResourceTypeId(): int
     {
         return $this->lib_resource_type_id;
     }
 
     /**
-     * @param int|null $lib_resource_type_id
+     * @param int $lib_resource_type_id
      */
-    public function setLibResourceTypeId($lib_resource_type_id)
+    public function setLibResourceTypeId(int $lib_resource_type_id): void
     {
         $this->lib_resource_type_id = $lib_resource_type_id;
     }
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getLibPublishingId()
+    public function getLibPublishingId(): int
     {
         return $this->lib_publishing_id;
     }
 
     /**
-     * @param int|null $lib_publishing_id
+     * @param int $lib_publishing_id
      */
-    public function setLibPublishingId($lib_publishing_id)
+    public function setLibPublishingId(int $lib_publishing_id): void
     {
         $this->lib_publishing_id = $lib_publishing_id;
     }
@@ -120,7 +120,7 @@ class StoreLibBookDTO
     /**
      * @return string|null
      */
-    public function getReleaseDate()
+    public function getReleaseDate(): ?string
     {
         return $this->release_date;
     }
@@ -128,7 +128,7 @@ class StoreLibBookDTO
     /**
      * @param string|null $release_date
      */
-    public function setReleaseDate($release_date)
+    public function setReleaseDate(?string $release_date): void
     {
         $this->release_date = $release_date;
     }
@@ -136,7 +136,7 @@ class StoreLibBookDTO
     /**
      * @return int
      */
-    public function getPage()
+    public function getPage(): int
     {
         return $this->page;
     }
@@ -144,7 +144,7 @@ class StoreLibBookDTO
     /**
      * @param int $page
      */
-    public function setPage($page)
+    public function setPage(int $page): void
     {
         $this->page = $page;
     }
@@ -152,7 +152,7 @@ class StoreLibBookDTO
     /**
      * @return float|null
      */
-    public function getPrice()
+    public function getPrice(): ?float
     {
         return $this->price;
     }
@@ -160,7 +160,7 @@ class StoreLibBookDTO
     /**
      * @param float|null $price
      */
-    public function setPrice($price)
+    public function setPrice(?float $price): void
     {
         $this->price = $price;
     }
@@ -168,7 +168,7 @@ class StoreLibBookDTO
     /**
      * @return int
      */
-    public function getNumber()
+    public function getNumber(): int
     {
         return $this->number;
     }
@@ -176,7 +176,7 @@ class StoreLibBookDTO
     /**
      * @param int $number
      */
-    public function setNumber($number)
+    public function setNumber(int $number): void
     {
         $this->number = $number;
     }
@@ -184,7 +184,7 @@ class StoreLibBookDTO
     /**
      * @return string
      */
-    public function getAnnotation()
+    public function getAnnotation(): string
     {
         return $this->annotation;
     }
@@ -192,7 +192,7 @@ class StoreLibBookDTO
     /**
      * @param string $annotation
      */
-    public function setAnnotation($annotation)
+    public function setAnnotation(string $annotation): void
     {
         $this->annotation = $annotation;
     }
@@ -200,7 +200,7 @@ class StoreLibBookDTO
     /**
      * @return bool
      */
-    public function isIsActive()
+    public function isIsActive(): bool
     {
         return $this->is_active;
     }
@@ -208,7 +208,7 @@ class StoreLibBookDTO
     /**
      * @param bool $is_active
      */
-    public function setIsActive($is_active)
+    public function setIsActive(bool $is_active): void
     {
         $this->is_active = $is_active;
     }
@@ -216,7 +216,7 @@ class StoreLibBookDTO
     /**
      * @return string|null
      */
-    public function getImage()
+    public function getImage(): ?string
     {
         return $this->image;
     }
@@ -224,7 +224,7 @@ class StoreLibBookDTO
     /**
      * @param string|null $image
      */
-    public function setImage($image)
+    public function setImage(?string $image): void
     {
         $this->image = $image;
     }
@@ -232,16 +232,16 @@ class StoreLibBookDTO
     /**
      * @return int
      */
-    public function getBbkId()
+    public function getLibBbkId(): int
     {
-        return $this->bbk_id;
+        return $this->lib_bbk_id;
     }
 
     /**
-     * @param int $bbk_id
+     * @param int $lib_bbk_id
      */
-    public function setBbkId($bbk_id)
+    public function setLibBbkId(int $lib_bbk_id): void
     {
-        $this->bbk_id = $bbk_id;
+        $this->lib_bbk_id = $lib_bbk_id;
     }
 }
