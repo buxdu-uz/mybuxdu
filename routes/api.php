@@ -15,6 +15,7 @@ Route::group(['prefix' => 'main', 'middleware' => 'jwt'], function (){
 //    LIBRARIES ROUTES
     Route::group(['prefix' => 'libraries'], function (){
         Route::get('bbks',[BbkController::class,'paginate']);
+        Route::get('bbk/all',[BbkController::class,'getAll']);
         Route::post('bbks',[BbkController::class,'store']);
         Route::put('bbks/{lib_bbk}/update',[BbkController::class,'update']);
         Route::delete('bbks/{lib_bbk}/delete',[BbkController::class,'delete']);

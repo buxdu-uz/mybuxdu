@@ -39,6 +39,12 @@ class BbkController extends Controller
         return BbkResource::collection($this->bbks->paginate(\request()->query('pagination',10),$filter));
     }
 
+    public function getAll(BbkFilterRequest $request)
+    {
+        $filter = app()->make(BbkFilter::class, ['queryParams' => array_filter($request->validated())]);
+        return BbkResource::collection($this->bbks->getAll($filter));
+    }
+
     /**
      * @param StoreBbkRequest $request
      * @param StoreBbkAction $action

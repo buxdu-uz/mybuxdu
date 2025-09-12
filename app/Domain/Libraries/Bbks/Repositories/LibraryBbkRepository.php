@@ -10,7 +10,14 @@ class LibraryBbkRepository
     {
         return LibBbk::query()
             ->Filter($filter)
-//            ->orderBy('name')
             ->paginate($pagination);
+    }
+
+    public function getAll($filter)
+    {
+        return LibBbk::query()
+            ->Filter($filter)
+            ->get()
+            ->sortBy('name');
     }
 }
