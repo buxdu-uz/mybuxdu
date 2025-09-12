@@ -8,7 +8,7 @@ class LibraryBookRepository
     public function paginate($pagination)
     {
         return LibBook::query()
-            ->orderBy('name')
+            ->orderByDesc('created_at')
             ->paginate($pagination);
     }
 }
