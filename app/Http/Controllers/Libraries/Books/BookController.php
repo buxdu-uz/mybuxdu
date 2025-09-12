@@ -47,6 +47,15 @@ class BookController extends Controller
         }
     }
 
+    public function show(LibBook $book)
+    {
+        try {
+            return $this->successResponse('Книга успешно получена', new BookResource($book));
+        }catch (Exception $exception){
+            return $this->errorResponse($exception->getMessage());
+        }
+    }
+
     public function update(UpdateLibBookRequest $request, LibBook $book,UpdateLibBookAction $action)
     {
         try {

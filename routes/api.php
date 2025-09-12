@@ -28,6 +28,7 @@ Route::group(['prefix' => 'main', 'middleware' => 'jwt'], function (){
 
         Route::get('books',[BookController::class,'paginate']);
         Route::post('books',[BookController::class,'store']);
+        Route::get('books/{book}/show',[BookController::class,'show']);
         Route::put('books/{book}/update',[BookController::class,'update']);
         Route::delete('books/{book}/delete',[BookController::class,'destroy']);
     });
