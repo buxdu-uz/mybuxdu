@@ -21,6 +21,7 @@ class BbkResource extends JsonResource
             'info' => $this->info,
             'is_active' => $this->is_active,
             'created_at' => $this->created_at,
+            'resources_count' => $this->resources_count,
             'children' => BbkChildResource::collection($this->children)
         ];
     }

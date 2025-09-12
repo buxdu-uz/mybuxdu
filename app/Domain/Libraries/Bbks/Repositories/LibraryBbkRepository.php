@@ -9,6 +9,7 @@ class LibraryBbkRepository
     public function paginate($pagination,$filter)
     {
         return LibBbk::query()
+            ->withCount('resources')
             ->Filter($filter)
             ->paginate($pagination);
     }
