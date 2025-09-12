@@ -22,9 +22,15 @@ Route::group(['prefix' => 'main', 'middleware' => 'jwt'], function (){
 
         Route::get('publishings',[PublishingController::class,'paginate']);
         Route::get('publishing/all',[PublishingController::class,'getAll']);
+        Route::post('publishings',[PublishingController::class,'store']);
+        Route::put('publishings/{lib_publishing}/update',[PublishingController::class,'update']);
+        Route::delete('publishings/{lib_publishing}/delete',[PublishingController::class,'destroy']);
 
         Route::get('resource_types',[ResourceTypeController::class,'paginate']);
         Route::get('resource_type/all',[ResourceTypeController::class,'getAll']);
+        Route::post('resource_types',[ResourceTypeController::class,'store']);
+        Route::put('resource_types/{lib_reesource_type}/update',[ResourceTypeController::class,'update']);
+        Route::delete('resource_types/{lib_reesource_type}/delete',[ResourceTypeController::class,'destroy']);
 
         Route::get('books',[BookController::class,'paginate']);
         Route::post('books',[BookController::class,'store']);
