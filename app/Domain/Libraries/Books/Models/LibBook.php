@@ -2,6 +2,7 @@
 
 namespace App\Domain\Libraries\Books\Models;
 
+use App\Domain\Libraries\Bbks\Models\LibBbk;
 use App\Domain\Libraries\Publishings\Models\LibPublishing;
 use App\Domain\Libraries\Resources\Models\LibResourceType;
 use Illuminate\Database\Eloquent\Model;
@@ -23,6 +24,16 @@ class LibBook extends Model
         'price',
         'release_date'
     ];
+
+    public function qrs()
+    {
+        return $this->hasMany(LibBookQr::class, 'lib_book_id');
+    }
+
+    public function bbk()
+    {
+        return $this->belongsTo(LibBbk::class,'lib_bbk_id');
+    }
 
     public function publishing()
     {
