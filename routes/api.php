@@ -22,6 +22,8 @@ Route::group(['prefix' => 'main', 'middleware' => 'jwt'], function (){
         Route::get('resource_types',[ResourceTypeController::class,'paginate']);
         Route::get('books',[BookController::class,'paginate']);
         Route::post('books',[BookController::class,'store']);
+        Route::put('books/{book}/update',[BookController::class,'update']);
+        Route::delete('books/{book}/delete',[BookController::class,'destroy']);
     });
 //    LIBRARIES ROUTES END
 
