@@ -131,4 +131,4 @@ INSERT INTO lib_resource_types (id, name) VALUES (130, 'Ilmiy va amaliy jurnal')
 INSERT INTO lib_resource_types (id, name) VALUES (131, 'Tavsiyalar');
 INSERT INTO lib_resource_types (id, name) VALUES (132, 'Биографический очерк');
 INSERT INTO lib_resource_types (id, name) VALUES (133, 'Biograficheskiy ocherk');
-INSERT INTO lib_resource_types (id, name) VALUES (134, 'Saylanma');;
+INSERT INTO lib_resource_types (id, name) VALUES (134, 'Saylanma');
