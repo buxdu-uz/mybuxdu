@@ -13,4 +13,11 @@ class LibraryPublishingRepository
             ->orderBy('name')
             ->paginate($pagination);
     }
+
+    public function getAll()
+    {
+        return LibPublishing::query()
+            ->get()
+            ->sortBy('name');
+    }
 }

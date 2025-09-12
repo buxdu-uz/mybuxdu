@@ -26,4 +26,9 @@ class PublishingController extends Controller
     {
         return PublishingResource::collection($this->publishings->paginate(\request()->query('pagination')));
     }
+
+    public function getAll()
+    {
+        return PublishingResource::collection($this->publishings->getAll());
+    }
 }

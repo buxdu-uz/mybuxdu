@@ -18,8 +18,13 @@ Route::group(['prefix' => 'main', 'middleware' => 'jwt'], function (){
         Route::post('bbks',[BbkController::class,'store']);
         Route::put('bbks/{lib_bbk}/update',[BbkController::class,'update']);
         Route::delete('bbks/{lib_bbk}/delete',[BbkController::class,'delete']);
+
         Route::get('publishings',[PublishingController::class,'paginate']);
+        Route::get('publishing/all',[PublishingController::class,'getAll']);
+
         Route::get('resource_types',[ResourceTypeController::class,'paginate']);
+        Route::get('resource_type/all',[ResourceTypeController::class,'getAll']);
+
         Route::get('books',[BookController::class,'paginate']);
         Route::post('books',[BookController::class,'store']);
         Route::put('books/{book}/update',[BookController::class,'update']);

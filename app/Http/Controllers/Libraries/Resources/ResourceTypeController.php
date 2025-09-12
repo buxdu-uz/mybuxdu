@@ -26,4 +26,9 @@ class ResourceTypeController extends Controller
     {
         return ResourceTypeResource::collection($this->resources->paginate(\request()->query('pagination')));
     }
+
+    public function getAll()
+    {
+        return ResourceTypeResource::collection($this->resources->getAll());
+    }
 }

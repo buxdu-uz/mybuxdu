@@ -14,4 +14,11 @@ class LibraryResourceTypeRepository
             ->orderBy('name')
             ->paginate($pagination);
     }
+
+    public function getAll()
+    {
+        return LibResourceType::query()
+            ->get()
+            ->sortBy('name');
+    }
 }
