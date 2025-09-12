@@ -10,7 +10,7 @@ class LibraryPublishingRepository
     public function paginate($pagination)
     {
         return LibPublishing::query()
-            ->orderBy('name')
+            ->orderByDesc('created_at')
             ->paginate($pagination);
     }
 

@@ -11,6 +11,7 @@ class LibraryBbkRepository
         return LibBbk::query()
             ->withCount('resources')
             ->Filter($filter)
+            ->orderByDesc('created_at')
             ->paginate($pagination);
     }
 

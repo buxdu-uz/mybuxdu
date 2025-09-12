@@ -11,7 +11,7 @@ class LibraryResourceTypeRepository
     public function paginate($pagination)
     {
         return LibResourceType::query()
-            ->orderBy('name')
+            ->orderByDesc('created_at')
             ->paginate($pagination);
     }
 
