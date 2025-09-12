@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('lib_book_qrs', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Domain\Libraries\Books\Models\LibBook::class)
+            $table->foreignIdFor(\App\Models\LibBookResource::class)
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();

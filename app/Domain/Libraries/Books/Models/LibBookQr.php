@@ -8,5 +8,5 @@ class LibBookQr extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['lib_book_id', 'qr_path'];
+    protected $fillable = ['lib_book_resource_id', 'qr_path'];
 }

@@ -5,6 +5,7 @@ namespace App\Domain\Libraries\Books\Actions;
 use App\Domain\Libraries\Books\DTO\StoreLibBookDTO;
 use App\Domain\Libraries\Books\Models\LibBook;
 use App\Domain\Libraries\Books\Models\LibBookQr;
+use App\Models\LibBookResource;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -40,8 +41,13 @@ class StoreLibBookAction
                 ]);
 
             for ($i = 1; $i <= $dto->getNumber(); $i++) {
-                $qrRecord = LibBookQr::create([
+                $resource = LibBookResource::create([
                     'lib_book_id' => $lib_book->id,
+                    'add_date' => now(),
+                    'arrival_date' => now(),
+                ]);
+                $qrRecord = LibBookQr::create([
+                    'lib_book_resource_id' => $resource->id,
                     'qr_path'     => null,
                 ]);
 

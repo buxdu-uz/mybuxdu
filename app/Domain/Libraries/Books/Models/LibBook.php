@@ -5,6 +5,7 @@ namespace App\Domain\Libraries\Books\Models;
 use App\Domain\Libraries\Bbks\Models\LibBbk;
 use App\Domain\Libraries\Publishings\Models\LibPublishing;
 use App\Domain\Libraries\Resources\Models\LibResourceType;
+use App\Models\LibBookResource;
 use Illuminate\Database\Eloquent\Model;
 
 class LibBook extends Model
@@ -25,19 +26,19 @@ class LibBook extends Model
         'release_date'
     ];
 
-    public function qrs()
-    {
-        return $this->hasMany(LibBookQr::class, 'lib_book_id');
-    }
-
     public function bbk()
     {
-        return $this->belongsTo(LibBbk::class,'lib_bbk_id');
+        return $this->belongsTo(LibBbk::class,'lib_bbk_id')->without('children');
     }
 
     public function publishing()
     {
         return $this->belongsTo(LibPublishing::class,'lib_publishing_id');
+    }
+
+    public function lib_book_resources()
+    {
+        return $this->hasMany(LibBookResource::class,'lib_book_id');
     }
 
     public function resourceType()
