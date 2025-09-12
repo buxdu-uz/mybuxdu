@@ -35,6 +35,7 @@ class QrCodeGenerationOldBook extends Command
         foreach ($books as $book) {
             echo "Processing book ID: {$book->id}\n";
             for ($i = 1; $i <= $book->number; $i++) {
+                echo "Processing book qrcode: {$i}\n";
                 $qrRecord = LibBookQr::create([
                     'lib_book_id' => $book->id,
                     'qr_path'     => null,
@@ -45,7 +46,7 @@ class QrCodeGenerationOldBook extends Command
 
                 $svg = QrCode::format('svg')->size(200)->generate($payload);
 
-                Storage::put("public/files/qr_codes/{$filename}", $svg);
+                Storage::put("files/qr_codes/{$filename}", $svg);
 
                 $qrRecord->update([
                     'qr_path' => "files/qr_codes/{$filename}",
