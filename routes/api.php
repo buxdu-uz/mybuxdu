@@ -37,6 +37,7 @@ Route::group(['prefix' => 'main', 'middleware' => 'jwt'], function (){
         Route::get('books/{book}/show',[BookController::class,'show']);
         Route::put('books/{book}/update',[BookController::class,'update']);
         Route::delete('books/{book}/delete',[BookController::class,'destroy']);
+        Route::post('book_resource/{lib_book_resource}/update/status',[BookController::class,'updateBookResourceStatus']);
     });
 //    LIBRARIES ROUTES END
 

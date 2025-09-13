@@ -13,11 +13,11 @@ enum LibBookResourceEnum: string
     public function label(): string
     {
         return match ($this) {
-            self::VALID      => 'Yaroqli',
+            self::VALID               => 'Yaroqli',
             self::REPAIR_DEMAND       => 'Tamir talab',
-            self::INVALID     => 'Yaroqsiz',
-            self::LOSER     => 'Yo`qolgan ',
-            self::DISPOSAL     => 'Utilizatsiya '
+            self::INVALID             => 'Yaroqsiz',
+            self::LOSER               => 'Yo`qolgan ',
+            self::DISPOSAL            => 'Utilizatsiya '
         };
     }
 }

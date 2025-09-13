@@ -12,6 +12,7 @@ use App\Domain\Libraries\Books\Requests\StoreLibBookRequest;
 use App\Domain\Libraries\Books\Requests\UpdateLibBookRequest;
 use App\Domain\Libraries\Books\Resources\BookResource;
 use App\Http\Controllers\Controller;
+use App\Models\LibBookResource;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -74,6 +75,24 @@ class BookController extends Controller
             $book->delete();
 
             return $this->successResponse('Книга успешно удалена');
+        }catch (Exception $exception){
+            return $this->errorResponse($exception->getMessage());
+        }
+    }
+
+    public function updateBookResourceStatus(Request $request,LibBookResource $lib_book_resource)
+    {
+        $request->validate([
+            'status' => 'required|string|in:valid,repair_demand,invalid,loser,disposal',
+        ],[
+            'status.in' => 'Kitob manbasi holati noto‘g‘ri. Yaroqli qiymatlar: yaroqli, ta\'mirlash_talab, yaroqsiz, yo\'qolgan, utilizatsiya',
+        ]);
+        try {
+            $lib_book_resource->update([
+                'status' => $request->input('status')
+            ]);
+
+            return $this->successResponse('Статус книги успешно обновлен');
         }catch (Exception $exception){
             return $this->errorResponse($exception->getMessage());
         }
