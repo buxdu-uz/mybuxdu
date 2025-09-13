@@ -50,7 +50,6 @@ class QrCodeGenerationOldBook extends Command
             $qrRecord->update([
                 'qr_path' => "files/qr_codes/{$filename}",
             ]);
-
         }
     }
 }
