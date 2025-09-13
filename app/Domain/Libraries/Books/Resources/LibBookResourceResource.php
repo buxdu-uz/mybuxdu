@@ -26,9 +26,7 @@ class LibBookResourceResource extends JsonResource
             'add_date' => $this->add_date,
             'oh_date' => $this->oh_date,
             'arrival_date' => $this->arrival_date,
-            'qrs' => BookQrResource::collection(
-                    $this->qrs()->paginate($request->query('pagination', 30))
-                )->response()->getData(true),
+            'qrs' => new BookQrResource($this->qr)
         ];
     }
 }

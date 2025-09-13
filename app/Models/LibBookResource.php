@@ -22,8 +22,8 @@ class LibBookResource extends Model
         'status' => LibBookResourceEnum::class
     ];
 
-    public function qrs()
+    public function qr()
     {
-        return $this->hasMany(LibBookQr::class, 'lib_book_resource_id');
+        return $this->belongsTo(LibBookQr::class, 'id','lib_book_resource_id');
     }
 }
