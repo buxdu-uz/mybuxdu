@@ -30,26 +30,27 @@ class QrCodeGenerationOldBook extends Command
      */
     public function handle()
     {
-        $books = LibBookResource::query()
-            ->get();
+        LibBookResource::query()
+            ->chunk(500, function ($books) {
+                foreach ($books as $book) {
+                    echo "Processing book resource ID: {$book->id}\n";
 
-        foreach ($books as $book) {
-            echo "Processing book resource ID: {$book->id}\n";
-            $qrRecord = LibBookQr::create([
-                'lib_book_resource_id' => $book->id,
-                'qr_path'     => null,
-            ]);
+                    $qrRecord = LibBookQr::create([
+                        'lib_book_resource_id' => $book->id,
+                        'qr_path'     => null,
+                    ]);
 
-            $payload = (string) $qrRecord->id;
-            $filename = "book_{$book->id}_qr_{$qrRecord->id}.svg";
+                    $payload = (string) $qrRecord->id;
+                    $filename = "book_{$book->id}_qr_{$qrRecord->id}.svg";
 
-            $svg = QrCode::format('svg')->size(200)->generate($payload);
+                    $svg = QrCode::format('svg')->size(200)->generate($payload);
 
-            Storage::put("files/qr_codes/{$filename}", $svg);
+                    Storage::put("files/qr_codes/{$filename}", $svg);
 
-            $qrRecord->update([
-                'qr_path' => "files/qr_codes/{$filename}",
-            ]);
-        }
+                    $qrRecord->update([
+                        'qr_path' => "files/qr_codes/{$filename}",
+                    ]);
+                }
+            });
     }
 }
